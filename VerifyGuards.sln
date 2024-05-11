@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Slender.Tools.VerifyGuards", "src\Slender.Tools.VerifyGuards\Slender.Tools.VerifyGuards.csproj", "{94196373-ED30-4D05-9309-272110F14980}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slender.Tools.VerifyGuards.Tests", "test\Slender.Tools.VerifyGuards.Tests\Slender.Tools.VerifyGuards.Tests.csproj", "{55DEA012-769C-46F6-9414-851FACCE3FD8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94196373-ED30-4D05-9309-272110F14980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94196373-ED30-4D05-9309-272110F14980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94196373-ED30-4D05-9309-272110F14980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94196373-ED30-4D05-9309-272110F14980}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55DEA012-769C-46F6-9414-851FACCE3FD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55DEA012-769C-46F6-9414-851FACCE3FD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55DEA012-769C-46F6-9414-851FACCE3FD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55DEA012-769C-46F6-9414-851FACCE3FD8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8CF107B6-8375-4A8D-83D4-913182C4B239}
+	EndGlobalSection
+EndGlobal

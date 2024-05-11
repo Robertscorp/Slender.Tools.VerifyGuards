@@ -1,0 +1,35 @@
+﻿using Slender.Tools.VerifyGuards.Internals;
+using System;
+
+namespace Slender.Tools.VerifyGuards
+{
+
+    public abstract class Parameter(bool IsNullable, Type ParameterType)
+    {
+
+        #region - - - - - - Properties - - - - - -
+
+        internal bool IsNullable { get; } = IsNullable;
+
+        internal string Name { get; set; }
+
+        internal Type ParameterType { get; } = ParameterType;
+
+        #endregion Properties
+
+        #region - - - - - - Methods - - - - - -
+
+        internal object GetValue()
+            => InstanceCache.GetInstance(this.ParameterType);
+
+        internal bool IsInvalidNonNullableValueType()
+            => this.IsNullable && this.ParameterType.IsNonNullableValueType();
+
+        internal bool IsInvalidNullableValueType()
+            => !this.IsNullable && this.ParameterType.IsNullableValueType();
+
+        #endregion Methods
+
+    }
+
+}
