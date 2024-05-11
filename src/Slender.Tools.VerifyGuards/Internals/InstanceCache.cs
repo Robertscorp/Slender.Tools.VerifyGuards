@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Moq;
+using System;
 using System.Collections.Concurrent;
 using System.Linq;
 
@@ -21,9 +22,8 @@ namespace Slender.Tools.VerifyGuards.Internals
             if (!s_InstanceByType.TryGetValue(type, out var _Instance))
             {
                 if (type.IsAbstract)
-                {
-                    // TODO: Mock.
-                }
+                    _Instance = ((InternalMock)Activator.CreateInstance(typeof(InternalMock<>).MakeGenericType(type))).GetInstance();
+
                 else
                 {
                     var _Parameters = Array.Empty<object>();
@@ -40,15 +40,42 @@ namespace Slender.Tools.VerifyGuards.Internals
                                         .ToArray();
 
                     _Instance = Activator.CreateInstance(type, _Parameters);
-
-                    s_InstanceByType.TryAdd(type, _Instance);
                 }
+
+                s_InstanceByType.TryAdd(type, _Instance);
             }
 
             return _Instance;
         }
 
         #endregion Methods
+
+        #region - - - - - - Nested Classes - - - - - -
+
+        private abstract class InternalMock
+        {
+
+            #region - - - - - - Methods - - - - - -
+
+            public abstract object GetInstance();
+
+            #endregion Methods
+
+        }
+
+        private class InternalMock<T> : InternalMock where T : class
+        {
+
+            #region - - - - - - Methods - - - - - -
+
+            public override object GetInstance()
+                => new Mock<T>().Object;
+
+            #endregion Methods
+
+        }
+
+        #endregion Nested Classes
 
     }
 

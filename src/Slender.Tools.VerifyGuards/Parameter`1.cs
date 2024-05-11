@@ -4,6 +4,12 @@
     public class Parameter<T>(bool IsNullable) : Parameter(IsNullable, typeof(T))
     {
 
+        #region - - - - - - Properties - - - - - -
+
+        public T Object => default!;
+
+        #endregion Properties
+
         #region - - - - - - Operations - - - - - -
 
         /// <summary>

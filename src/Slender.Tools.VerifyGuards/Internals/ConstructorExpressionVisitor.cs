@@ -38,8 +38,11 @@ namespace Slender.Tools.VerifyGuards.Internals
 
         private Expression VisitConstructorParameter(Expression node, string parameterName)
         {
-            var _Node = (UnaryExpression)node;
-            var _Parameter = Expression.Lambda<Func<Parameter>>(_Node.Operand).Compile().Invoke();
+            node = node is MemberExpression _MemberExpression
+                    ? _MemberExpression.Expression
+                    : ((UnaryExpression)node).Operand;
+
+            var _Parameter = Expression.Lambda<Func<Parameter>>(node).Compile().Invoke();
             _Parameter.Name = parameterName;
 
             this.m_Parameters.Add(_Parameter);
