@@ -38,12 +38,11 @@ namespace Slender.Tools.VerifyGuards.Internals
 
         private Expression VisitConstructorParameter(Expression node, string parameterName)
         {
-            node = node is MemberExpression _MemberExpression
-                    ? _MemberExpression.Expression
-                    : ((UnaryExpression)node).Operand;
+            var _Call = (MethodCallExpression)node;
+            if (_Call.Method.DeclaringType != typeof(Is))
+                throw new Exception();
 
-            var _Parameter = Expression.Lambda<Func<Parameter>>(node).Compile().Invoke();
-            _Parameter.Name = parameterName;
+            var _Parameter = new Parameter(_Call.Method.Name == nameof(Is.Nullable), _Call.Method.GetGenericArguments()[0]) { Name = parameterName };
 
             this.m_Parameters.Add(_Parameter);
 

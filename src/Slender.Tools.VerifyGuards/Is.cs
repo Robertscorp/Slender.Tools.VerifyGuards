@@ -6,11 +6,11 @@
 
         #region - - - - - - Methods - - - - - -
 
-        public static Parameter<T> NotNullable<T>()
-            => new(IsNullable: false);
+        public static T NotNullable<T>()
+            => default;
 
-        public static Parameter<T> Nullable<T>()
-            => new(IsNullable: true);
+        public static T Nullable<T>()
+            => default;
 
         #endregion Methods
 

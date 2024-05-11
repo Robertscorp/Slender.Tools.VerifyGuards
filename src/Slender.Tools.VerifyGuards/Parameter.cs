@@ -4,7 +4,7 @@ using System;
 namespace Slender.Tools.VerifyGuards
 {
 
-    public abstract class Parameter(bool IsNullable, Type ParameterType)
+    public class Parameter(bool IsNullable, Type ParameterType)
     {
 
         #region - - - - - - Properties - - - - - -
