@@ -54,11 +54,11 @@ namespace Slender.Tools.VerifyGuards
             if (_Parameter.ParameterType.IsNonNullableValueType())
                 return false;
 
+            var _Params = parameters.Select(param => param.GetValue()).ToList();
+            _Params[index] = null;
+
             try
             {
-                var _Params = parameters.Select(param => param.GetValue()).ToList();
-                _Params[index] = null;
-
                 action.Invoke(_Params);
 
                 if (!_Parameter.IsNullable && !_Parameter.ParameterType.IsValueType) return true;
