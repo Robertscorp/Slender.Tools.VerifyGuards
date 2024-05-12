@@ -6,6 +6,16 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
     public class VerifyTests
     {
 
+        #region - - - - - - Guards (Guarded Nullable Value Type) Tests - - - - - -
+
+        [Fact]
+        public void Guards_GuardedNullableValueTypeParam_GuardedNullableIntParam_ThrowsException()
+            => Assert.IsType<Exception>(Record.Exception(()
+                => Verify.Guards(()
+                    => TestClass.GuardedNullableValueTypeParam(Is.Nullable<int?>()))));
+
+        #endregion Guards (Guarded Nullable Value Type) Tests
+
         #region - - - - - - Guards (Not Nullable Constructor) Tests - - - - - -
 
         [Fact]
