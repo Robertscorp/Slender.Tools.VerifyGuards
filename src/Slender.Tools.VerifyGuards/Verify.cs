@@ -13,21 +13,12 @@ namespace Slender.Tools.VerifyGuards
 
         #region - - - - - - Methods - - - - - -
 
-        public static void Guards<T>(Expression<Func<T>> constructor)
+        public static void Guards(LambdaExpression expression)
         {
-            var _Visitor = new ConstructorExpressionVisitor();
-            var _Constructor = _Visitor.Visit(constructor, out var _Parameters);
-
-            Guards(_Constructor, _Parameters);
-        }
-
-        public static void Guards<T>(Expression<Action<T>> methodCall) { }
-
-        private static void Guards(Action<List<object>> action, List<Parameter> parameters)
-        {
-            var _InvalidParameters = parameters.Select((p, index) => new
+            var _Action = new GuardsExpressionVisitor().Visit(expression, out var _Parameters);
+            var _InvalidParameters = _Parameters.Select((p, index) => new
             {
-                InvalidGuard = IsParameterIncorrectlyGuarded(action, parameters, index),
+                InvalidGuard = IsParameterIncorrectlyGuarded(_Action, _Parameters, index),
                 InvalidNonNullableValueType = p.IsInvalidNonNullableValueType(),
                 InvalidNullableValueType = p.IsInvalidNullableValueType(),
                 Parameter = p
