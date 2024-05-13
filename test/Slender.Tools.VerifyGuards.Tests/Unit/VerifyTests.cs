@@ -10,7 +10,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_GuardedNullableValueTypeParam_GuardedNullableIntParam_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => TestClass.GuardedNullableValueTypeParam(Is.Nullable<int?>()))));
 
@@ -29,7 +29,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableConstructor_StringParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => new TestClass(
                         Is.Nullable<string>(),
@@ -39,7 +39,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableConstructor_IntParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => new TestClass(
                         Is.NotNullable<string>(),
@@ -49,7 +49,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableConstructor_TestClass2ParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => new TestClass(
                         Is.NotNullable<string>(),
@@ -59,7 +59,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableConstructor_ITestInterfaceParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => new TestClass(
                         Is.NotNullable<string>(),
@@ -82,7 +82,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableInstanceAction_StringParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards((TestClass tc)
                     => tc.InstanceActionNotNullableParams(
                         Is.Nullable<string>(),
@@ -92,7 +92,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableInstanceAction_IntParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards((TestClass tc)
                     => tc.InstanceActionNotNullableParams(
                         Is.NotNullable<string>(),
@@ -102,7 +102,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableInstanceAction_TestClass2ParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards((TestClass tc)
                     => tc.InstanceActionNotNullableParams(
                         Is.NotNullable<string>(),
@@ -112,7 +112,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableInstanceAction_ITestInterfaceParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards((TestClass tc)
                     => tc.InstanceActionNotNullableParams(
                         Is.NotNullable<string>(),
@@ -135,7 +135,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableInstanceFunction_StringParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards((TestClass tc)
                     => tc.InstanceFuncNotNullableParams(
                         Is.Nullable<string>(),
@@ -145,7 +145,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableInstanceFunction_IntParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards((TestClass tc)
                     => tc.InstanceFuncNotNullableParams(
                         Is.NotNullable<string>(),
@@ -155,7 +155,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableInstanceFunction_TestClass2ParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards((TestClass tc)
                     => tc.InstanceFuncNotNullableParams(
                         Is.NotNullable<string>(),
@@ -165,7 +165,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableInstanceFunction_ITestInterfaceParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards((TestClass tc)
                     => tc.InstanceFuncNotNullableParams(
                         Is.NotNullable<string>(),
@@ -188,7 +188,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableStaticAction_StringParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => TestClass.StaticActionNotNullableParams(
                         Is.Nullable<string>(),
@@ -198,7 +198,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableStaticAction_IntParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => TestClass.StaticActionNotNullableParams(
                         Is.NotNullable<string>(),
@@ -208,7 +208,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableStaticAction_TestClass2ParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => TestClass.StaticActionNotNullableParams(
                         Is.NotNullable<string>(),
@@ -218,7 +218,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableStaticAction_ITestInterfaceParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => TestClass.StaticActionNotNullableParams(
                         Is.NotNullable<string>(),
@@ -241,7 +241,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableStaticFunction_StringParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => TestClass.StaticActionNotNullableParams(
                         Is.Nullable<string>(),
@@ -251,7 +251,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableStaticFunction_IntParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => TestClass.StaticActionNotNullableParams(
                         Is.NotNullable<string>(),
@@ -261,7 +261,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableStaticFunction_TestClass2ParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => TestClass.StaticActionNotNullableParams(
                         Is.NotNullable<string>(),
@@ -271,7 +271,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NotNullableStaticFunction_ITestInterfaceParamDeclaredAsNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => TestClass.StaticActionNotNullableParams(
                         Is.NotNullable<string>(),
@@ -294,7 +294,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableConstructor_StringParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => new TestClass(
                         Is.NotNullable<string>(),
@@ -304,7 +304,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableConstructor_IntParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => new TestClass(
                         Is.Nullable<string>(),
@@ -314,7 +314,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableConstructor_TestClass2ParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => new TestClass(
                         Is.Nullable<string>(),
@@ -324,7 +324,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableConstructor_ITestInterfaceParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => new TestClass(
                         Is.Nullable<string>(),
@@ -347,7 +347,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableInstanceAction_StringParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards((TestClass tc)
                     => tc.InstanceActionNullableParams(
                         Is.NotNullable<string>(),
@@ -357,7 +357,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableInstanceAction_IntParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards((TestClass tc)
                     => tc.InstanceActionNullableParams(
                         Is.Nullable<string>(),
@@ -367,7 +367,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableInstanceAction_TestClass2ParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards((TestClass tc)
                     => tc.InstanceActionNullableParams(
                         Is.Nullable<string>(),
@@ -377,7 +377,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableInstanceAction_ITestInterfaceParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards((TestClass tc)
                     => tc.InstanceActionNullableParams(
                         Is.Nullable<string>(),
@@ -400,7 +400,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableInstanceFunction_StringParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards((TestClass tc)
                     => tc.InstanceFuncNullableParams(
                         Is.NotNullable<string>(),
@@ -410,7 +410,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableInstanceFunction_IntParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards((TestClass tc)
                     => tc.InstanceFuncNullableParams(
                         Is.Nullable<string>(),
@@ -420,7 +420,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableInstanceFunction_TestClass2ParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards((TestClass tc)
                     => tc.InstanceFuncNullableParams(
                         Is.Nullable<string>(),
@@ -430,7 +430,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableInstanceFunction_ITestInterfaceParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards((TestClass tc)
                     => tc.InstanceFuncNullableParams(
                         Is.Nullable<string>(),
@@ -453,7 +453,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableStaticAction_StringParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => TestClass.StaticActionNullableParams(
                         Is.NotNullable<string>(),
@@ -463,7 +463,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableStaticAction_IntParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => TestClass.StaticActionNullableParams(
                         Is.Nullable<string>(),
@@ -473,7 +473,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableStaticAction_TestClass2ParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => TestClass.StaticActionNullableParams(
                         Is.Nullable<string>(),
@@ -483,7 +483,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableStaticAction_ITestInterfaceParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => TestClass.StaticActionNullableParams(
                         Is.Nullable<string>(),
@@ -506,7 +506,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableStaticFunction_StringParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => TestClass.StaticActionNullableParams(
                         Is.NotNullable<string>(),
@@ -516,7 +516,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableStaticFunction_IntParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => TestClass.StaticActionNullableParams(
                         Is.Nullable<string>(),
@@ -526,7 +526,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableStaticFunction_TestClass2ParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => TestClass.StaticActionNullableParams(
                         Is.Nullable<string>(),
@@ -536,7 +536,7 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_NullableStaticFunction_ITestInterfaceParamDeclaredAsNotNullable_ThrowsException()
-            => Assert.IsType<Exception>(Record.Exception(()
+            => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(()
                     => TestClass.StaticActionNullableParams(
                         Is.Nullable<string>(),

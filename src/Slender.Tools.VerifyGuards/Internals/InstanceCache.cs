@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Linq;
+using System.Text;
 
 namespace Slender.Tools.VerifyGuards.Internals
 {
@@ -18,6 +19,25 @@ namespace Slender.Tools.VerifyGuards.Internals
         #region - - - - - - Methods - - - - - -
 
         public static object GetInstance(Type type)
+        {
+            try
+            {
+                return GetInstanceInternal(type);
+            }
+            catch (Exception)
+            {
+                var _MessageBuilder = new StringBuilder(32)
+                    .Append("Could not get an instance of '")
+                    .Append(type.Name)
+                    .Append("'. If possible, manually provide an instance of '")
+                    .Append(type.Name)
+                    .Append("' to resolve this issue.");
+
+                throw new GuardException(_MessageBuilder.ToString());
+            }
+        }
+
+        private static object GetInstanceInternal(Type type)
         {
             if (!s_InstanceByType.TryGetValue(type, out var _Instance))
             {
@@ -36,7 +56,7 @@ namespace Slender.Tools.VerifyGuards.Internals
                     if (_Constructor != null)
                         _Parameters = _Constructor
                                         .GetParameters()
-                                        .Select(p => GetInstance(p.ParameterType))
+                                        .Select(p => GetInstanceInternal(p.ParameterType))
                                         .ToArray();
 
                     _Instance = Activator.CreateInstance(type, _Parameters);

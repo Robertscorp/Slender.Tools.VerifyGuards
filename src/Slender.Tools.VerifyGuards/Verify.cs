@@ -35,7 +35,7 @@ namespace Slender.Tools.VerifyGuards
                         .TryWriteInvalidNonNullableValueTypeError(_Param.Parameter)
                         .TryWriteInvalidNullableValueTypeError(_Param.Parameter);
 
-                throw new Exception(_MessageBuilder.ToString());
+                throw new GuardException(_MessageBuilder.ToString());
             }
         }
 
