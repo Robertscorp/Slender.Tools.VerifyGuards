@@ -8,11 +8,19 @@ using System.Text;
 namespace Slender.Tools.VerifyGuards
 {
 
+    /// <summary>
+    /// Provides a set of static methods for verifying guards are being enforced.
+    /// </summary>
     public static class Verify
     {
 
         #region - - - - - - Methods - - - - - -
 
+        /// <summary>
+        /// Verifies the guards defined in the specified <paramref name="expression"/> are being enforced.
+        /// </summary>
+        /// <param name="expression">The expression to verify.</param>
+        /// <exception cref="GuardException">Thrown when the guards defined in the specified <paramref name="expression"/> are not being enforced.</exception>
         public static void Guards(LambdaExpression expression)
         {
             var _Action = new GuardsExpressionVisitor().Visit(expression, out var _Parameters);
