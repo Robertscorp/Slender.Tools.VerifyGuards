@@ -64,6 +64,10 @@
             return string.Empty;
         }
 
+        public static void UnconstructibleParamDirect(TestClass3 tc) { }
+
+        public static void UnconstructibleParamIndirect(TestClass4 tc) { }
+
         #endregion Methods
 
     }

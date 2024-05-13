@@ -15,12 +15,14 @@ namespace Slender.Tools.VerifyGuards
 
         internal Type ParameterType { get; } = ParameterType;
 
+        internal object Value { get; set; }
+
         #endregion Properties
 
         #region - - - - - - Methods - - - - - -
 
         internal object GetValue()
-            => InstanceCache.GetInstance(this.ParameterType);
+            => this.Value ?? InstanceCache.GetInstance(this.ParameterType);
 
         internal bool IsInvalidNonNullableValueType()
             => this.IsNullable && this.ParameterType.IsNonNullableValueType();

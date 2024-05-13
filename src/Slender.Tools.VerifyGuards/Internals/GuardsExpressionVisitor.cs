@@ -51,6 +51,10 @@ namespace Slender.Tools.VerifyGuards.Internals
 
             var _Parameter = new Parameter(_Call.Method.Name == nameof(Is.Nullable), _Call.Method.GetGenericArguments()[0]) { Name = parameterName };
 
+            var _ValueExpression = _Call.Arguments.FirstOrDefault();
+            if (_ValueExpression != null)
+                _Parameter.Value = Expression.Lambda<Func<object>>(Expression.Convert(_ValueExpression, typeof(object))).Compile().Invoke();
+
             this.m_Parameters.Add(_Parameter);
 
             var _ArrayIndexExpression = Expression.Property(this.m_ParameterExpression, "Item", Expression.Constant(this.m_Parameters.Count - 1));

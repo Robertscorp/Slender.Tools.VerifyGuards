@@ -546,6 +546,38 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         #endregion Guards (Nullable Static Function) Tests
 
+        #region - - - - - - Guards (Unconstructible Parameter Direct) Tests - - - - - -
+
+        [Fact]
+        public void Guards_UnconstructibleParamDirect_NotSpecifyingValue_ThrowsException()
+            => Assert.IsType<GuardException>(Record.Exception(()
+                => Verify.Guards(()
+                    => TestClass.UnconstructibleParamDirect(Is.Nullable<TestClass3>()))));
+
+        [Fact]
+        public void Guards_UnconstructibleParamDirect_ManuallySpecifyingValue_DoesNotThrowException()
+            => Assert.Null(Record.Exception(()
+                => Verify.Guards(()
+                    => TestClass.UnconstructibleParamDirect(Is.Nullable(new TestClass3(1))))));
+
+        #endregion Guards (Unconstructible Parameter Direct) Tests
+
+        #region - - - - - - Guards (Unconstructible Parameter Indirect) Tests - - - - - -
+
+        [Fact]
+        public void Guards_UnconstructibleParamIndirect_NotSpecifyingValue_ThrowsException()
+            => Assert.IsType<GuardException>(Record.Exception(()
+                => Verify.Guards(()
+                    => TestClass.UnconstructibleParamIndirect(Is.Nullable<TestClass4>()))));
+
+        [Fact]
+        public void Guards_UnconstructibleParamIndirect_ManuallySpecifyingValue_DoesNotThrowException()
+            => Assert.Null(Record.Exception(()
+                => Verify.Guards(()
+                    => TestClass.UnconstructibleParamIndirect(Is.Nullable(new TestClass4(new TestClass3(1)))))));
+
+        #endregion Guards (Unconstructible Parameter Indirect) Tests
+
     }
 
 }
