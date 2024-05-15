@@ -17,10 +17,18 @@ namespace Slender.Tools.VerifyGuards
         #region - - - - - - Methods - - - - - -
 
         /// <summary>
-        /// Verifies the guards defined in the specified <paramref name="expression"/> are being enforced.
+        /// Verifies that the parameters of an invocation are being correctly guarded.
         /// </summary>
-        /// <param name="expression">The expression to verify.</param>
-        /// <exception cref="GuardException">Thrown when the guards defined in the specified <paramref name="expression"/> are not being enforced.</exception>
+        /// <param name="expression">
+        /// An expression which represents an invocation, and the expected guards for the parameters of the invocation.<br/>
+        /// <br/>
+        /// Supports constructors, and instance and static methods.<br/>
+        /// <br/>
+        /// <code>() => new Class(Is.Nullable&lt;T&gt;(), ...)</code>
+        /// <code>() => Class.StaticMethod(Is.Nullable&lt;T&gt;(), ...)</code>
+        /// <code>(Class c) => c.InstanceMethod(Is.Nullable&lt;T&gt;(), ...)</code>
+        /// </param>
+        /// <exception cref="GuardException">Thrown when the actual guards within the invocation do not match the expected guards defined in the specified <paramref name="expression"/>.</exception>
         public static void Guards(LambdaExpression expression)
         {
             var _Action = new GuardsExpressionVisitor().Visit(expression, out var _Parameters);
