@@ -11,6 +11,12 @@
 
         #endregion Constructors
 
+        #region - - - - - - Methods - - - - - -
+
+        public void TestMethod(int i1) { }
+
+        #endregion Methods
+
     }
 
 }

@@ -37,8 +37,8 @@ namespace Slender.Tools.VerifyGuards.Internals
 
         private Expression VisitLambdaBody_MethodCall(MethodCallExpression call, ParameterInfo[] parameters)
             => Expression.Call(
-                call.Object == null
-                    ? null
+                call.Object == null || call.Object.NodeType != ExpressionType.Parameter
+                    ? call.Object
                     : Expression.Constant(InstanceCache.GetInstance(call.Object.Type)),
                 call.Method,
                 call.Arguments.Select((a, index) => this.VisitParameter(a, parameters[index].Name)));

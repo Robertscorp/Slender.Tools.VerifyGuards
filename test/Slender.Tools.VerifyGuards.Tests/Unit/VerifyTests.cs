@@ -6,6 +6,38 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
     public class VerifyTests
     {
 
+        #region - - - - - - Fields - - - - - -
+
+        private readonly TestClass3 m_TestClass3 = new(1);
+
+        #endregion Fields
+
+        #region - - - - - - Guards (Instance From Different Sources) Tests - - - - - -
+
+        [Fact]
+        public void Guards_InstanceFromConstructor_DoesNotThrowException()
+            => Verify.Guards(() => new TestClass3(1).TestMethod(Is.NotNullable<int>()));
+
+        [Fact]
+        public void Guards_InstanceFromField_DoesNotThrowException()
+            => Verify.Guards(() => this.m_TestClass3.TestMethod(Is.NotNullable<int>()));
+
+        [Fact]
+        public void Guards_InstanceFromParameter_DoesNotThrowException()
+            => this.Guards_InstanceFromParameter_DoesNotThrowException_SupportMethod(this.m_TestClass3);
+
+        private void Guards_InstanceFromParameter_DoesNotThrowException_SupportMethod(TestClass3 testClass3)
+            => Verify.Guards(() => testClass3.TestMethod(Is.NotNullable<int>()));
+
+        [Fact]
+        public void Guards_InstanceFromVariable_DoesNotThrowException()
+        {
+            var _TestClass3 = this.m_TestClass3;
+            Verify.Guards(() => _TestClass3.TestMethod(Is.NotNullable<int>()));
+        }
+
+        #endregion Guards (Instance From Different Sources) Tests
+
         #region - - - - - - Guards (Not Nullable Constructor) Tests - - - - - -
 
         [Fact]
