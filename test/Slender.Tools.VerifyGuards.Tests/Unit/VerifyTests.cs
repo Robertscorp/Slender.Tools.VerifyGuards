@@ -6,16 +6,6 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
     public class VerifyTests
     {
 
-        #region - - - - - - Guards (Guarded Nullable Value Type) Tests - - - - - -
-
-        [Fact]
-        public void Guards_GuardedNullableValueTypeParam_GuardedNullableIntParam_ThrowsException()
-            => Assert.IsType<GuardException>(Record.Exception(()
-                => Verify.Guards(()
-                    => TestClass.GuardedNullableValueTypeParam(Is.Nullable<int?>()))));
-
-        #endregion Guards (Guarded Nullable Value Type) Tests
-
         #region - - - - - - Guards (Not Nullable Constructor) Tests - - - - - -
 
         [Fact]
@@ -174,6 +164,16 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
                         Is.Nullable<ITestInterface>()))));
 
         #endregion Guards (Not Nullable Instance Function) Tests
+
+        #region - - - - - - Guards (Not Nullable Null Value Type) Tests - - - - - -
+
+        [Fact]
+        public void Guards_NullableValueTypeParam_NullableIntNotNullParam_ThrowsException()
+            => Assert.IsType<GuardException>(Record.Exception(()
+                => Verify.Guards(()
+                    => TestClass.NullableValueTypeParam(Is.NotNullable<int?>()))));
+
+        #endregion Guards (Not Nullable Null Value Type) Tests
 
         #region - - - - - - Guards (Not Nullable Static Action) Tests - - - - - -
 
@@ -545,6 +545,16 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
                         Is.NotNullable<ITestInterface>()))));
 
         #endregion Guards (Nullable Static Function) Tests
+
+        #region - - - - - - Guards (Nullable Non-Null Value Type) Tests - - - - - -
+
+        [Fact]
+        public void Guards_NotNullableValueTypeParam_NotNullableIntNullParam_ThrowsException()
+            => Assert.IsType<GuardException>(Record.Exception(()
+                => Verify.Guards(()
+                    => TestClass.NotNullableValueTypeParam(Is.Nullable<int>()))));
+
+        #endregion Guards (Nullable Non-Null Value Type) Tests
 
         #region - - - - - - Guards (Unconstructible Parameter Direct) Tests - - - - - -
 

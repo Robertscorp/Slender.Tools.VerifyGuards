@@ -19,9 +19,6 @@
 
         #region - - - - - - Methods - - - - - -
 
-        public static void GuardedNullableValueTypeParam(int? i)
-            => ArgumentNullException.ThrowIfNull(i);
-
         public void InstanceActionNotNullableParams(string s, int i, TestClass2 tc, ITestInterface ti)
         {
             ArgumentNullException.ThrowIfNull(s);
@@ -42,6 +39,10 @@
 
         public string InstanceFuncNullableParams(string s, int? i, TestClass2 tc, ITestInterface ti)
             => string.Empty;
+
+        public static void NotNullableValueTypeParam(int i) { }
+
+        public static void NullableValueTypeParam(int? i) { }
 
         public static void StaticActionNotNullableParams(string s, int i, TestClass2 tc, ITestInterface ti)
         {
