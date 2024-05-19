@@ -1,5 +1,5 @@
 <h1 align=center>
-<img src="media/slender 1024.png" width=50%>
+<img src="media/Slender 1024.png" width=50%>
 </h1>
 
 # Slender.Tools.TestGuards
