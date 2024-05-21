@@ -21,7 +21,7 @@ namespace Slender.Tools.VerifyGuards.Internals
         #region - - - - - - Methods - - - - - -
 
         public object GetValue()
-            => this.Value ?? InstanceCache.GetInstance(this.ParameterType);
+            => this.Value ?? InstanceResolver.GetInstance(this.ParameterType);
 
         public bool IsInvalidNonNullableValueType()
             => this.IsNullable && this.ParameterType.IsNonNullableValueType();

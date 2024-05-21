@@ -39,7 +39,7 @@ namespace Slender.Tools.VerifyGuards.Internals
             => Expression.Call(
                 call.Object == null || call.Object.NodeType != ExpressionType.Parameter
                     ? call.Object
-                    : Expression.Constant(InstanceCache.GetInstance(call.Object.Type)),
+                    : Expression.Constant(InstanceResolver.GetInstance(call.Object.Type)),
                 call.Method,
                 call.Arguments.Select((a, index) => this.VisitParameter(a, parameters[index].Name)));
 
