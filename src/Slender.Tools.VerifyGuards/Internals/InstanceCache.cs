@@ -42,7 +42,7 @@ namespace Slender.Tools.VerifyGuards.Internals
             if (!s_InstanceByType.TryGetValue(type, out var _Instance))
             {
                 if (type.IsAbstract)
-                    _Instance = ((InternalMock)Activator.CreateInstance(typeof(InternalMock<>).MakeGenericType(type))).GetInstance();
+                    _Instance = ((Mock)Activator.CreateInstance(typeof(Mock<>).MakeGenericType(type))).Object;
 
                 else
                 {
@@ -69,33 +69,6 @@ namespace Slender.Tools.VerifyGuards.Internals
         }
 
         #endregion Methods
-
-        #region - - - - - - Nested Classes - - - - - -
-
-        private abstract class InternalMock
-        {
-
-            #region - - - - - - Methods - - - - - -
-
-            public abstract object GetInstance();
-
-            #endregion Methods
-
-        }
-
-        private class InternalMock<T> : InternalMock where T : class
-        {
-
-            #region - - - - - - Methods - - - - - -
-
-            public override object GetInstance()
-                => new Mock<T>().Object;
-
-            #endregion Methods
-
-        }
-
-        #endregion Nested Classes
 
     }
 
