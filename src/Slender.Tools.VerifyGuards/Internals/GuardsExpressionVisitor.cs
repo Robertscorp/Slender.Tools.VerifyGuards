@@ -24,7 +24,14 @@ namespace Slender.Tools.VerifyGuards.Internals
             parameters = this.m_Parameters;
             parameters.Clear();
 
-            return Expression.Lambda<Action<List<object>>>(this.VisitLambdaBody(lambda.Body), this.m_ParameterExpression).Compile();
+            try
+            {
+                return Expression.Lambda<Action<List<object>>>(this.VisitLambdaBody(lambda.Body), this.m_ParameterExpression).Compile();
+            }
+            catch (Exception)
+            {
+                throw new GuardException("Could not parse expression tree, the specified expression is not supported.");
+            }
         }
 
         private Expression VisitLambdaBody(Expression body)

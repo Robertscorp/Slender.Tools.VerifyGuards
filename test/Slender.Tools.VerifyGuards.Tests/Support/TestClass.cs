@@ -40,6 +40,9 @@
         public string InstanceFuncNullableParams(string s, int? i, TestClass2 tc, ITestInterface ti)
             => string.Empty;
 
+        public static long NoParameters()
+            => 0;
+
         public static void NotNullableValueTypeParam(int i) { }
 
         public static void NullableValueTypeParam(int? i) { }

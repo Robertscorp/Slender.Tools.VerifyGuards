@@ -37,7 +37,15 @@ namespace Slender.Tools.VerifyGuards
         /// Static Methods:
         /// <code>() => Class.StaticMethod(Is.Nullable&lt;T&gt;(), ...)</code>
         /// </param>
-        /// <exception cref="GuardException">Thrown when the actual guards within the invocation do not match the expected guards defined in the specified <paramref name="expression"/>.</exception>
+        /// <exception cref="GuardException">
+        /// Thrown when:
+        ///  - The expression contains a parameter that has been defined as not nullable, but is a nullable value type.
+        ///  - The expression contains a parameter that has been defined as not nullable, but is not guarded against null values.
+        ///  - The expression contains a parameter that has been defined as nullable, but is a non-nullable value type.
+        ///  - The expression contains a parameter that has been defined as nullable, but is guarded against null values.
+        ///  - The expression is not supported.
+        ///  - The expression requires resolving a value and the constructor for that value is throwing an exception.
+        /// </exception>
         public static void Guards(LambdaExpression expression)
         {
             var _Action = new GuardsExpressionVisitor().Visit(expression, out var _Parameters);
