@@ -54,12 +54,12 @@
             ArgumentNullException.ThrowIfNull(ti);
         }
 
-        public static void StaticActionNullableParams(string s, int? i, TestClass2 tc, ITestInterface ti) { }
+        public static void StaticActionNullableParams(string? s, int? i, TestClass2? tc, ITestInterface ti) { }
 
         public static string StaticFuncNotNullableParams(string s, int i, TestClass2 tc, ITestInterface ti)
             => string.Empty;
 
-        public static string StaticFuncNullableParams(string s, int? i, TestClass2 tc, ITestInterface ti)
+        public static string StaticFuncNullableParams(string? s, int? i, TestClass2? tc, ITestInterface ti)
         {
             ArgumentNullException.ThrowIfNull(s);
             ArgumentNullException.ThrowIfNull(tc);

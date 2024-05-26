@@ -489,6 +489,26 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
             => Assert.IsType<GuardException>(Record.Exception(()
                 => Verify.Guards(() => (int)TestClass.NoParameters())));
 
+        [Fact]
+        public void Guards_InvalidExpression4_ThrowsGuardException()
+            => Assert.IsType<GuardException>(Record.Exception(()
+                => Verify.Guards(() => (decimal)10)));
+
+        [Fact]
+        public void Guards_InvalidExpression5_ThrowsGuardException()
+            => Assert.IsType<GuardException>(Record.Exception(()
+                => Verify.Guards(() => string.Empty)));
+
+        [Fact]
+        public void Guards_InvalidExpression6_ThrowsGuardException()
+            => Assert.IsType<GuardException>(Record.Exception(()
+                => Verify.Guards(() => TestClass.StaticActionNotNullableParams(string.Empty, 1, default!, Is.NotNullable<ITestInterface>()))));
+
+        [Fact]
+        public void Guards_InvalidExpression7_ThrowsGuardException()
+            => Assert.IsType<GuardException>(Record.Exception(()
+                => Verify.Guards(() => TestClass.StaticActionNullableParams(default, default, default, Is.Nullable<ITestInterface>()))));
+
         #endregion Guards (Invalid Expression) Tests
 
         #region - - - - - - Guards (Nullable Static Action) Tests - - - - - -
