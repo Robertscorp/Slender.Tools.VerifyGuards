@@ -1,9 +1,8 @@
-## Guard Exception
-### '_Param_' has been defined as nullable, but is a non-nullable value type.
+## Slender.Tools.VerifyGuards.GuardException :<br/> '_Param_' has been defined as nullable, but is a non-nullable value type.
 This message occurs when the parameter '_Param_' has been defined as nullable in the Verify.Guards method, but is a non-nullable value type.
 
 ## Example
-In the following example, the test will fail because `int dependency` is a non-nullable value type and is declared as nullable in the Verify.
+In the following example, the guard will fail because `int dependency` is a non-nullable value type and is declared as nullable in the Verify.
 ```csharp
 public class Example
 {
@@ -11,15 +10,9 @@ public class Example
     public Example(int dependency) { }
 
 }
-
-public class UnitTests
-{
-
-    [Fact]
-    public void DependecyIsNullable()
-        => Verify.Guards(() => new Example(Is.Nullable<int>()));
-
-}
+```
+```csharp
+Verify.Guards(() => new Example(Is.Nullable<int>()));
 ```
 ## How To Fix
 ### When '_dependency_' is supposed to be nullable

@@ -1,9 +1,8 @@
-## Guard Exception
-### '_Param_' has been defined as nullable, but is guarded against null values.
+## Slender.Tools.VerifyGuards.GuardException :<br/> '_Param_' has been defined as nullable, but is guarded against null values.
 This message occurs when the parameter '_Param_' has been defined as nullable in the Verify.Guards method, but an ArgumentNullException is thrown if the value of '_Param_' is null.
 
 ## Example
-In the following example, the test will fail because `Dependency dependency` is guarded against null values and is declared as nullable in the Verify.
+In the following example, the guard will fail because `Dependency dependency` is guarded against null values and is declared as nullable in the Verify.
 ```csharp
 public class Dependency { }
 
@@ -14,15 +13,9 @@ public class Example
         => ArgumentNullException.ThrowIfNull(dependency, nameof(dependency));
 
 }
-
-public class UnitTests
-{
-
-    [Fact]
-    public void DependecyIsNullable()
-        => Verify.Guards(() => new Example(Is.Nullable<Dependency>()));
-
-}
+```
+```csharp
+Verify.Guards(() => new Example(Is.Nullable<Dependency>()));
 ```
 ## How To Fix
 ### When '_dependency_' is supposed to be nullable

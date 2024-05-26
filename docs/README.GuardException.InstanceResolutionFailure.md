@@ -1,11 +1,10 @@
-## Guard Exception
-### Could not get an instance of '_Dependency_'. If possible, manually provide an instance of '_Dependency_' to resolve this issue.
+## Slender.Tools.VerifyGuards.GuardException :<br/> Could not get an instance of '_Dependency_'. If possible, manually provide an instance of '_Dependency_' to resolve this issue.
 This message occurs when the package is unable to create an instance of '_Dependency_'.
 
 This means that somewhere in the constructor dependency tree, a constructor is throwing an exception because it does not accept the default value provided by the package.
 
 ## Example
-In the following example, both tests will fail with the same message, because the value provided to `int i` by the package will be 0.
+In the following example, the guards will fail with the same message because the value provided to `int i` by the package will be 0.
 ```csharp
 public class Dependency
 {
@@ -23,22 +22,13 @@ public class Example
     public Example(Dependency dependency) { }
 
 }
-
-public class UnitTests
-{
-
-    [Fact]
-    public void CannotConstructDependency()
-        => Verify.Guards(() => new Example(Is.Nullable<Dependency>()));
-
-    [Fact]
-    public void CannotConstructDependency()
-        => Verify.Guards((Dependency d) => d.InstanceMethod(Is.Nullable<string>())));
-
-}
+```
+```csharp
+Verify.Guards(() => new Example(Is.Nullable<Dependency>()));
+Verify.Guards((Dependency d) => d.InstanceMethod(Is.Nullable<string>())));
 ```
 ## How To Fix
-### When '_Dependency_' is an invocation parameter (Example Test 1)
+### When '_Dependency_' is an invocation parameter (Example Guard 1)
 ```csharp
 () => new Example(Is.Nullable<Dependency>())
 
@@ -49,7 +39,7 @@ public class UnitTests
 () => new Example(Is.Nullable(dependency))          // Parameter
 () => new Example(Is.Nullable(_Dependency))         // Variable
 ```
-### When '_Dependency_' is an expression parameter (Example Test 2)
+### When '_Dependency_' is an expression parameter (Example Guard 2)
 ```csharp
 (Dependency d) => d.InstanceMethod(Is.Nullable<string>())
 
