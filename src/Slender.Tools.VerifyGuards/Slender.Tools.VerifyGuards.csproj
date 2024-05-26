@@ -11,7 +11,7 @@
     <PackageProjectUrl>https://github.com/Robertscorp/Slender.Tools.VerifyGuards</PackageProjectUrl>
     <Copyright>Copyright Slender</Copyright>
     <RepositoryUrl>https://github.com/Robertscorp/Slender.Tools.VerifyGuards</RepositoryUrl>
-    <PackageTags>verify; guard; guards; test; tests</PackageTags>
+    <PackageTags>verify; guard; guards; clause; clauses; test; tests</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <VersionPrefix>1.0.0</VersionPrefix>
     <AssemblyVersion>1.0.0</AssemblyVersion>
