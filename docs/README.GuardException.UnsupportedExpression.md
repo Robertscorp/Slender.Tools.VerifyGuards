@@ -18,4 +18,4 @@ Verify.Guards(() => (decimal)10);
 Verify.Guards(() => string.Empty);
 ```
 ## How To Fix
-To resolve this issue, you will need to re-write the expression in a way that is supported. <br/>Ensure that all invocation parameters are either Is.Nullable&lt;T&gt; or Is.NotNullable&lt;T&gt;.<br/>To see the list of supported expressions, refer to the [Usage](/README.md#Usage 'Usage') section of the readme.
+To resolve this issue, you will need to re-write the expression in a way that is supported. <br/>Ensure that all invocation parameters are either Is.Nullable&lt;T&gt; or Is.NotNullable&lt;T&gt;.<br/>To see the list of supported expressions, refer to the [Usage](/README.md#usage 'Usage') section of the readme.
