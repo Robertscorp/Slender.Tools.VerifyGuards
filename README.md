@@ -2,7 +2,6 @@
 <img src="media/Slender 1024.png" width=25%>
 </h3>
 
-
 Slender.Tools.TestGaurds is a simple .NET library for easily writing tests for guard clauses.
 
 [![NuGet](https://img.shields.io/nuget/v/Slender.Tools.VerifyGuards)](https://www.nuget.org/packages/Slender.Tools.VerifyGuards) [![NuGet](https://img.shields.io/nuget/dt/Slender.Tools.VerifyGuards)](https://www.nuget.org/packages/Slender.Tools.VerifyGuards)
@@ -67,6 +66,7 @@ Need some help resolving a GuardException? Check out the links below.
 - ['_Param_' has been defined as nullable, but is a non-nullable value type.](docs/README.GuardException.NullableNotNullValueType.md 'Click for help')
 - ['_Param_' has been defined as nullable, but is guarded against null values.](docs/README.GuardException.GuardedNullable.md 'Click for help')
 - [Could not get an instance of '_Dependency_'. If possible, manually provide an instance of '_Dependency_' to resolve this issue.](docs/README.GuardException.InstanceResolutionFailure.md 'Click for help')
+- [Could not parse expression tree, the specified expression is not supported.](docs/README.GuardException.UnsupportedExpression.md 'Click for help')
 ### Docs
 Interested in learning more? Check out the [docs](docs/Slender.Tools.VerifyGuards.md 'Slender.Tools.VerifyGuards').
 ### Leave a Star :star:
