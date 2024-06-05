@@ -1,5 +1,5 @@
 <h3 align=center>
-<img src="media/Slender 1024.png" width=25%>
+<img src="media/VerifyGuards.svg" width=50%>
 </h3>
 
 Slender.Tools.VerifyGaurds is a simple .NET library for easily writing tests for guard clauses.
