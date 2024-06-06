@@ -2,7 +2,7 @@
 <img src="media/VerifyGuards.svg" width=50%>
 </h3>
 
-Slender.Tools.VerifyGaurds is a simple .NET library for easily writing tests for guard clauses.
+Slender.Tools.VerifyGuards is a simple .NET library for easily writing tests for guard clauses.
 
 [![NuGet](https://img.shields.io/nuget/v/Slender.Tools.VerifyGuards)](https://www.nuget.org/packages/Slender.Tools.VerifyGuards) [![NuGet](https://img.shields.io/nuget/dt/Slender.Tools.VerifyGuards)](https://www.nuget.org/packages/Slender.Tools.VerifyGuards)
 ### Usage
