@@ -1,15 +1,8 @@
 ﻿namespace Slender.Tools.VerifyGuards.Tests.Support
 {
 
-    internal class TestClass2
-    {
-
-        #region - - - - - - Constructors - - - - - -
-
-        public TestClass2(ITestInterface test) { }
-
-        #endregion Constructors
-
-    }
+#pragma warning disable CS9113 // Parameter is unread.
+    internal class TestClass2(ITestInterface test) { }
+#pragma warning restore CS9113 // Parameter is unread.
 
 }

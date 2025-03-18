@@ -24,9 +24,9 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_InstanceFromParameter_DoesNotThrowException()
-            => this.Guards_InstanceFromParameter_DoesNotThrowException_SupportMethod(this.m_TestClass3);
+            => Guards_InstanceFromParameter_DoesNotThrowException_SupportMethod(this.m_TestClass3);
 
-        private void Guards_InstanceFromParameter_DoesNotThrowException_SupportMethod(TestClass3 testClass3)
+        private static void Guards_InstanceFromParameter_DoesNotThrowException_SupportMethod(TestClass3 testClass3)
             => Verify.Guards(() => testClass3.TestMethod(Is.NotNullable<int>()));
 
         [Fact]
