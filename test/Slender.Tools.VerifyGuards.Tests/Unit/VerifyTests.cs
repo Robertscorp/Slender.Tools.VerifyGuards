@@ -627,6 +627,14 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         #endregion Guards (Nullable Non-Null Value Type) Tests
 
+        #region - - - - - - Guards (Non-Public Constructor) - - - - - -
+
+        [Fact]
+        public void Guards_NonPublicConstructor_ResolvingConstructorAsParameter_ResolvesCorrectly()
+            => Verify.Guards((TestClass5 tc) => tc.NoParameters());
+
+        #endregion Guards (Non-Public Constructor)
+
         #region - - - - - - Guards (Unconstructible Parameter Direct) Tests - - - - - -
 
         [Fact]
