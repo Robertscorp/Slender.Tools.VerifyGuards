@@ -29,7 +29,10 @@ namespace Slender.Tools.VerifyGuards.Internals
                 {
                     if (!_InstanceFactoryCache.TryGetValue(type, out var _ValueFunc))
                     {
-                        if (type.IsAbstract)
+                        if (type == typeof(Delegate) || type == typeof(MulticastDelegate))
+                            _ValueFunc = () => () => { };
+
+                        else if (type.IsAbstract || typeof(MulticastDelegate).IsAssignableFrom(type))
                             _ValueFunc = () => ((Mock)Activator.CreateInstance(typeof(Mock<>).MakeGenericType(type))).Object;
 
                         else if (type.IsValueType)
