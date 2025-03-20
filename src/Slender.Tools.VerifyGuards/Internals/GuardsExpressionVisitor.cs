@@ -28,6 +28,10 @@ namespace Slender.Tools.VerifyGuards.Internals
             {
                 return Expression.Lambda<Action<List<object>>>(this.VisitLambdaBody(lambda.Body), this.m_ParameterExpression).Compile();
             }
+            catch (GuardException)
+            {
+                throw;
+            }
             catch (Exception)
             {
                 throw new GuardException("Could not parse expression tree, the specified expression is not supported.");

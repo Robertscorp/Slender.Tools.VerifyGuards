@@ -91,6 +91,20 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         #endregion Guards (Not Nullable Constructor) Tests
 
+        #region - - - - - - Guards (Not Nullable Delegates) Tests - - - - - -
+
+        [Fact]
+        public void Guards_NotNullableDelegates_AllParamsDeclaredAsNotNullable_DoesNotThrowException()
+            => Verify.Guards((TestClass6 tc)
+                => tc.NonNullableDelegates(
+                    Is.NotNullable<Action<object>>(),
+                    Is.NotNullable<Func<object>>(),
+                    Is.NotNullable<TestDelegate>(),
+                    Is.NotNullable<Delegate>(),
+                    Is.NotNullable<MulticastDelegate>()));
+
+        #endregion Guards (Not Nullable Delegates) Tests
+
         #region - - - - - - Guards (Not Nullable Instance Action) Tests - - - - - -
 
         [Fact]
@@ -365,6 +379,20 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
                         Is.NotNullable<ITestInterface>()))));
 
         #endregion Guards (Nullable Constructor) Tests
+
+        #region - - - - - - Guards (Nullable Delegates) Tests - - - - - -
+
+        [Fact]
+        public void Guards_NullableDelegates_AllParamsDeclaredAsNullable_DoesNotThrowException()
+            => Verify.Guards((TestClass6 tc)
+                => tc.NullableDelegates(
+                    Is.Nullable<Action<object>>(),
+                    Is.Nullable<Func<object>>(),
+                    Is.Nullable<TestDelegate>(),
+                    Is.Nullable<Delegate>(),
+                    Is.Nullable<MulticastDelegate>()));
+
+        #endregion Guards (Nullable Delegates) Tests
 
         #region - - - - - - Guards (Nullable Instance Action) Tests - - - - - -
 
