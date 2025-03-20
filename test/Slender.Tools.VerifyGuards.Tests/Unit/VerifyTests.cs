@@ -24,9 +24,9 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
 
         [Fact]
         public void Guards_InstanceFromParameter_DoesNotThrowException()
-            => this.Guards_InstanceFromParameter_DoesNotThrowException_SupportMethod(this.m_TestClass3);
+            => Guards_InstanceFromParameter_DoesNotThrowException_SupportMethod(this.m_TestClass3);
 
-        private void Guards_InstanceFromParameter_DoesNotThrowException_SupportMethod(TestClass3 testClass3)
+        private static void Guards_InstanceFromParameter_DoesNotThrowException_SupportMethod(TestClass3 testClass3)
             => Verify.Guards(() => testClass3.TestMethod(Is.NotNullable<int>()));
 
         [Fact]
@@ -626,6 +626,14 @@ namespace Slender.Tools.VerifyGuards.Tests.Unit
                     => TestClass.NotNullableValueTypeParam(Is.Nullable<int>()))));
 
         #endregion Guards (Nullable Non-Null Value Type) Tests
+
+        #region - - - - - - Guards (Non-Public Constructor) - - - - - -
+
+        [Fact]
+        public void Guards_NonPublicConstructor_ResolvingConstructorAsParameter_ResolvesCorrectly()
+            => Verify.Guards((TestClass5 tc) => tc.NoParameters());
+
+        #endregion Guards (Non-Public Constructor)
 
         #region - - - - - - Guards (Unconstructible Parameter Direct) Tests - - - - - -
 

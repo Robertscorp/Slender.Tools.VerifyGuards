@@ -3,19 +3,18 @@
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>")]
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "<Pending>")]
-    internal class TestClass3
+    public class TestClass5
     {
 
         #region - - - - - - Constructors - - - - - -
 
-        public TestClass3(int i)
-            => ArgumentOutOfRangeException.ThrowIfNegativeOrZero(i);
+        internal TestClass5(ITestInterface @interface, TestClass5? testClass) { }
 
         #endregion Constructors
 
         #region - - - - - - Methods - - - - - -
 
-        public void TestMethod(int i1) { }
+        public void NoParameters() { }
 
         #endregion Methods
 
